@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <title>React App</title>
+    <style>
+      .app {
+        display: none;
+      }
+      .visible {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="local"><input type="radio" checked id="local" value="localStateApp" name="stateManagement" onChange="onInputCahge(this.value)" />Local State Management</label>
+    <label for="context"><input type="radio" id="context" value="contextApp" name="stateManagement" onChange="onInputCahge(this.value)" />Context State Management</label>
+    <label for="redux"><input type="radio" id="redux" value="reduxApp" name="stateManagement" onChange="onInputCahge(this.value)" />Redux State Management</label>
+    <label for="mobx"><input type="radio" id="mobx" value="mobxApp" name="stateManagement" onChange="onInputCahge(this.value)" />MobX State Management</label>
+  
+    <div id="localStateApp" class="app"></div>
+    <div id="contextApp" class="app"></div>
+    <div id="reduxApp" class="app"></div>
+    <div id="mobxApp" class="app"></div>
+
+    <script>
+      const VISIBLE_CLASS = 'visible';
+      const LOCAL_STATE = 'localStateApp';
+
+      function onInputCahge(value) {
+        const block = document.getElementById(value)
+        const visibleElements = document.getElementsByClassName(VISIBLE_CLASS)
+
+        visibleElements && [...visibleElements].forEach(el => el.classList.remove(VISIBLE_CLASS))
+        block && (block.classList.add(VISIBLE_CLASS))
+      }
+
+      onInputCahge(LOCAL_STATE)
+    </script>
+  </body>
+</html>
